@@ -145,7 +145,7 @@ class IsoCharacterSprite extends PIXI.Sprite {
     } 
 
     this.position.x = this._character.x;
-    this.position.y = this._character.y - this._character.h - this._character.j;
+    this.position.y = this._character.y - this._character.height - this._character.j;
 
   }
 

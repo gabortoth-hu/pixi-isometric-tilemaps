@@ -12,7 +12,11 @@ module.exports = [
     },
     module: {
       rules: [ 
-        { test: /\.tsx?$/, loader: 'ts-loader' }
+        {
+          test: /\.tsx?$/,
+          loader: 'ts-loader'
+        },
+        
       ]
     }
   },
@@ -30,14 +34,14 @@ module.exports = [
           test: /\.tsx?$/, 
           loader: 'ts-loader',
           options: {
-            configFileName: 'test.tsconfig.json'
-          }
+            configFile: 'test.tsconfig.json'
+          },
         }
       ]
     },
     plugins: [
-      new webpack.optimize.UglifyJsPlugin(),
-      new webpack.optimize.OccurrenceOrderPlugin(),
+//      new webpack.optimize.UglifyJsPlugin(),
+//      new webpack.optimize.OccurrenceOrderPlugin(),
     ]
   },
   {
@@ -45,7 +49,7 @@ module.exports = [
     target: 'node',
     output: {
       filename: '[name].js',
-      path: './dist',
+      path: __dirname +'/dist',
       libraryTarget: 'commonjs2',
     },
     externals: [ 'pixi.js', 'fpsmeter' ],
@@ -58,7 +62,10 @@ module.exports = [
     },    
     module: {
       rules: [ 
-        { test: /\.tsx?$/, loader: 'ts-loader' }
+        {
+          test: /\.tsx?$/,
+          loader: 'ts-loader',
+        }
       ]
     }
   }  

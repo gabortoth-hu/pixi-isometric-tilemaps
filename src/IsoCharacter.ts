@@ -23,7 +23,6 @@ abstract class IsoCharacter extends PIXI.Container {
 
     x                    : number;
     y                    : number;
-    h                    : number;
     j                    : number;
 
     mapX                 : number;
@@ -57,15 +56,6 @@ abstract class IsoCharacter extends PIXI.Container {
         this.scale = new PIXI.Point(1, 1);
         this.afterImageCount     = 0;
         this.afterImageSpacing   = 0;
-    }
-
-
-    get height() {
-        return this.h;
-    }
-
-    set height(value) {
-        this.h = value;
     }
 
     moveTo(x: number, y: number, h: number=0) {
@@ -138,7 +128,7 @@ abstract class IsoCharacter extends PIXI.Container {
     private _refreshCoordinates() {
         this.x = (this.mapX - this.mapY) * this._attributes.tileWidth / 2;
         this.y = (this.mapX + this.mapY) * this._attributes.tileWidth / 4;      
-        this.h = (this.mapH) * this._attributes.heightSize;
+        this.height = (this.mapH) * this._attributes.heightSize;
     }
 
     private _updateAnimation(delta: number) {
@@ -360,7 +350,7 @@ module IsoCharacter {
             this._targetH = this.newHeight * character._attributes.heightSize;
             this._diffX   = (this._targetX - character.x) / this.duration; 
             this._diffY   = (this._targetY - character.y) / this.duration; 
-            this._diffH   = (this._targetH - character.h) / this.duration; 
+            this._diffH   = (this._targetH - character.height) / this.duration; 
             this._targetSet = true;
         }
 
@@ -369,22 +359,22 @@ module IsoCharacter {
                 this._setTarget(character);
             }
             if (this.duration > 0) {
-                character.x += this._diffX * delta;
-                character.y += this._diffY * delta;
-                character.h += this._diffH * delta;
-                this.duration -= delta;
+                character.x      += this._diffX * delta;
+                character.y      += this._diffY * delta;
+                character.height += this._diffH * delta;
+                this.duration    -= delta;
                 this._endWhenDone(character);
             }
         }
 
         protected _endWhenDone(character: IsoCharacter) {
             if (this.isDone()) {
-                character.x    = this._targetX;
-                character.y    = this._targetY;
-                character.h    = this._targetH;
-                character.j    = 0;  
-                character.mapX = this._newMapX;
-                character.mapY = this._newMapY;
+                character.x      = this._targetX;
+                character.y      = this._targetY;
+                character.height = this._targetH;
+                character.j      = 0;  
+                character.mapX   = this._newMapX;
+                character.mapY   = this._newMapY;
             }
         }
 
@@ -415,12 +405,12 @@ module IsoCharacter {
                 this._setTarget(character);
             }            
             if (this.duration) {
-                character.x += this._diffX * delta;
-                character.y += this._diffY * delta;
-                character.h += this._diffH * delta; 
-                character.j  = Math.sin(this._angle) * this.jumpHeight;
-                this.duration -= delta;
-                this._angle += this._angleInc * delta;
+                character.x      += this._diffX * delta;
+                character.y      += this._diffY * delta;
+                character.height += this._diffH * delta; 
+                character.j       = Math.sin(this._angle) * this.jumpHeight;
+                this.duration    -= delta;
+                this._angle      += this._angleInc * delta;
                 this._endWhenDone(character);            
             }
         }

@@ -17,13 +17,13 @@ declare class IsoMap extends PIXI.Container {
     characters: IsoCharacter[];
     private _orderChanged;
     constructor();
-    readonly camera: PIXI.Point;
+    get camera(): PIXI.Point | PIXI.ObservablePoint;
     clean(): void;
     build(): void;
     heightAt(x: number, y: number): number;
     tileAt(x: number, y: number): number;
-    private _valueAt(array, x, y);
-    readonly globalAttributes: IsoMap.Attributes | null;
+    private _valueAt;
+    get globalAttributes(): IsoMap.Attributes | null;
     refreshOrder(): void;
     update(delta: number): void;
 }

@@ -7,7 +7,6 @@ declare abstract class IsoCharacter extends PIXI.Container {
     _attributes: IsoMap.Attributes;
     x: number;
     y: number;
-    h: number;
     j: number;
     mapX: number;
     mapY: number;
@@ -22,7 +21,6 @@ declare abstract class IsoCharacter extends PIXI.Container {
     afterImageSpacing: number;
     afterImageCount: number;
     constructor(attributes: IsoMap.Attributes, frameWidth: number, texture?: PIXI.BaseTexture | null);
-    height: number;
     moveTo(x: number, y: number, h?: number): this;
     animate(frames: number[], delay: number, loops?: number, wait?: boolean): this;
     face(direction: IsoCharacter.Direction): this;
@@ -31,9 +29,9 @@ declare abstract class IsoCharacter extends PIXI.Container {
     startAfterImages(count: number, spacing: number): this;
     endAfterImages(): this;
     wait(time: number): this;
-    private _refreshCoordinates();
-    private _updateAnimation(delta);
-    private _updateQueue(delta);
+    private _refreshCoordinates;
+    private _updateAnimation;
+    private _updateQueue;
     isMoving(): boolean;
     isAnimating(): boolean;
     update(delta: number): void;
@@ -118,7 +116,7 @@ declare module IsoCharacter {
         UP = 2,
         DOWN = 4,
         LEFT = 6,
-        RIGHT = 8,
+        RIGHT = 8
     }
 }
 export default IsoCharacter;

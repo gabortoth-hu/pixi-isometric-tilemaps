@@ -19,16 +19,17 @@ declare class IsoTile extends PIXI.Container {
     private _topRightWallTexture;
     constructor(tilemap: IsoMap, x: number, y: number, height: number, attributes: IsoTile.Attributes);
     onClick: (event: PIXI.interaction.InteractionEvent) => void;
-    private _setupRects();
-    private _updateRect();
-    private _updatePosition();
-    private _buildBottomSprite(maxHeight);
-    private _buildMiddleSprites(maxHeight);
-    private _buildTopSprite(maxHeight);
-    private _calculateMaxHeight();
-    private _buildSprites();
-    private _updateFrame(delta);
-    z: number;
+    private _setupRects;
+    private _updateRect;
+    private _updatePosition;
+    private _buildBottomSprite;
+    private _buildMiddleSprites;
+    private _buildTopSprite;
+    private _calculateMaxHeight;
+    private _buildSprites;
+    private _updateFrame;
+    get z(): number;
+    set z(value: number);
     update(delta: number): void;
 }
 declare module IsoTile {

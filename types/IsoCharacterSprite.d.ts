@@ -13,13 +13,13 @@ declare class IsoCharacterSprite extends PIXI.Sprite {
     private _afterImages;
     z: number | undefined;
     constructor(tilemap: IsoMap, character: IsoCharacter);
-    readonly tileX: number;
-    readonly tileY: number;
-    private _updateZ();
-    private _updateFrame();
-    private _updateAfterImages();
-    private _refreshAfterImages();
-    private _updateChildren(delta);
+    get tileX(): number;
+    get tileY(): number;
+    private _updateZ;
+    private _updateFrame;
+    private _updateAfterImages;
+    private _refreshAfterImages;
+    private _updateChildren;
     update(delta: number): void;
 }
 export default IsoCharacterSprite;

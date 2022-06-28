@@ -8,8 +8,9 @@ declare class IsoObjectSprite extends PIXI.Sprite {
     private _tile;
     private _tileHeight;
     constructor(tilemap: IsoMap, tile: IsoMap.Instance, tileHeight: number, obj: IsoObject);
-    z: number;
-    private _updatePosition();
+    get z(): number;
+    set z(value: number);
+    private _updatePosition;
     update(delta: number): void;
 }
 export default IsoObjectSprite;
